@@ -51,6 +51,7 @@
             this.helpExplainBox.Size = new System.Drawing.Size(294, 144);
             this.helpExplainBox.TabIndex = 1;
             this.helpExplainBox.Text = resources.GetString("helpExplainBox.Text");
+            this.helpExplainBox.TextChanged += new System.EventHandler(this.helpExplainBox_TextChanged);
             // 
             // copyrightButNotReally
             // 

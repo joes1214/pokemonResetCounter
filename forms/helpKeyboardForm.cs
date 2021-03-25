@@ -18,5 +18,10 @@ namespace pokemonCounterThing {
         private void helpKeyboardForm_Load(object sender, EventArgs e) {
 
         }
+
+        private void helpExplainBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

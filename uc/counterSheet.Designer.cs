@@ -44,12 +44,15 @@
             // 
             // resetCounterBox
             // 
-            this.resetCounterBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.resetCounterBox.BackColor = System.Drawing.SystemColors.Control;
+            this.resetCounterBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetCounterBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.resetCounterBox.Location = new System.Drawing.Point(52, 46);
             this.resetCounterBox.Name = "resetCounterBox";
             this.resetCounterBox.ReadOnly = true;
             this.resetCounterBox.Size = new System.Drawing.Size(128, 45);
             this.resetCounterBox.TabIndex = 1;
+            this.resetCounterBox.Text = "0";
             this.resetCounterBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.resetCounterBox.TextChanged += new System.EventHandler(this.resetCounterBox_TextChanged);
             // 

@@ -48,6 +48,7 @@ namespace pokemonCounterThing {
             
         }
 
+
         /*Function tries to parse the setStrartingVal textbox and
           tries to put it in the resetCounterBox. Added tempVal so
           it could reset the number incase the parse fails.*/
@@ -88,6 +89,14 @@ namespace pokemonCounterThing {
 
         public void defocusText() {
             focusLabel.Focus();
+        }
+
+        public void set_greenScreenMode(bool checkBox)
+        {
+            if (checkBox)
+                resetCounterBox.BackColor = Color.FromArgb(0, 255, 0);
+            else
+                resetCounterBox.BackColor = SystemColors.Control;
         }
     }
 }

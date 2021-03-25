@@ -119,9 +119,9 @@
   </resheader>
   <data name="helpExplainBox.Text" xml:space="preserve">
     <value>Hey, if you've clicked help, you probably have no idea how to use this program. That is ok, I'm here to help you know what to do.
-So basically you have up 5 forms for counting. Each form has it's own designated button to start ticking. From first to fifth form, it is:
+So basically you have up 6 forms for counting. Each form has it's own designated button to start ticking. From first to fifth form, it is:
 
-A, S, D,F, G
+A, S, D,F, G, H
 
 Some day I'll let you add the option to set your own keybindings.</value>
   </data>

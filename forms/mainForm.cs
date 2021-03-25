@@ -7,14 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+/*
+ TODO:
+    -Give user option to make text bold/change font i guess too
+    -Custom Keyboard input options (user defined)
+    -6th Slot - Done 
+    -save the previous counts
+     
+     */
+
 namespace pokemonCounterThing {
     public partial class mainForm : Form {
         //private string test = "";
-
         public mainForm() {
+            
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            ClientSize = new Size(216, 257);
 
             //this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mainForm_KeyDown);
         }
@@ -34,35 +44,37 @@ namespace pokemonCounterThing {
             this.counterSheet3 = new pokemonCounterThing.counterSheet();
             this.counterSheet1 = new pokemonCounterThing.counterSheet();
             this.counterSheet2 = new pokemonCounterThing.counterSheet();
+            this.greenScreenBox = new System.Windows.Forms.CheckBox();
+            this.counterSheet6 = new pokemonCounterThing.counterSheet();
             this.SuspendLayout();
             // 
             // isCounting
             // 
             this.isCounting.AutoSize = true;
-            this.isCounting.Location = new System.Drawing.Point(59, 214);
+            this.isCounting.Location = new System.Drawing.Point(12, 216);
             this.isCounting.Name = "isCounting";
-            this.isCounting.Size = new System.Drawing.Size(102, 17);
+            this.isCounting.Size = new System.Drawing.Size(127, 17);
             this.isCounting.TabIndex = 1;
-            this.isCounting.Text = "Keyboard Count";
+            this.isCounting.Text = "Start Keyboard Count";
             this.isCounting.UseVisualStyleBackColor = true;
             this.isCounting.CheckedChanged += new System.EventHandler(this.isCounting_CheckedChanged);
             // 
             // addCounterSheet
             // 
-            this.addCounterSheet.Location = new System.Drawing.Point(214, 86);
+            this.addCounterSheet.Location = new System.Drawing.Point(135, 185);
             this.addCounterSheet.Name = "addCounterSheet";
-            this.addCounterSheet.Size = new System.Drawing.Size(75, 41);
+            this.addCounterSheet.Size = new System.Drawing.Size(73, 23);
             this.addCounterSheet.TabIndex = 2;
-            this.addCounterSheet.Text = "More games to count";
+            this.addCounterSheet.Text = "More games";
             this.addCounterSheet.UseVisualStyleBackColor = true;
             this.addCounterSheet.Click += new System.EventHandler(this.addCounterSheet_Click);
             // 
             // removeCounterSheet
             // 
             this.removeCounterSheet.Enabled = false;
-            this.removeCounterSheet.Location = new System.Drawing.Point(335, 201);
+            this.removeCounterSheet.Location = new System.Drawing.Point(216, 185);
             this.removeCounterSheet.Name = "removeCounterSheet";
-            this.removeCounterSheet.Size = new System.Drawing.Size(75, 41);
+            this.removeCounterSheet.Size = new System.Drawing.Size(75, 50);
             this.removeCounterSheet.TabIndex = 7;
             this.removeCounterSheet.Text = "Less games to count";
             this.removeCounterSheet.UseVisualStyleBackColor = true;
@@ -71,9 +83,9 @@ namespace pokemonCounterThing {
             // 
             // helpButt
             // 
-            this.helpButt.Location = new System.Drawing.Point(167, 210);
+            this.helpButt.Location = new System.Drawing.Point(135, 212);
             this.helpButt.Name = "helpButt";
-            this.helpButt.Size = new System.Drawing.Size(75, 23);
+            this.helpButt.Size = new System.Drawing.Size(73, 23);
             this.helpButt.TabIndex = 8;
             this.helpButt.Text = "Help?";
             this.helpButt.UseVisualStyleBackColor = true;
@@ -82,7 +94,7 @@ namespace pokemonCounterThing {
             // counterSheet5
             // 
             this.counterSheet5.Enabled = false;
-            this.counterSheet5.Location = new System.Drawing.Point(318, 237);
+            this.counterSheet5.Location = new System.Drawing.Point(848, 12);
             this.counterSheet5.Name = "counterSheet5";
             this.counterSheet5.Size = new System.Drawing.Size(196, 189);
             this.counterSheet5.TabIndex = 6;
@@ -91,7 +103,7 @@ namespace pokemonCounterThing {
             // counterSheet4
             // 
             this.counterSheet4.Enabled = false;
-            this.counterSheet4.Location = new System.Drawing.Point(108, 237);
+            this.counterSheet4.Location = new System.Drawing.Point(639, 12);
             this.counterSheet4.Name = "counterSheet4";
             this.counterSheet4.Size = new System.Drawing.Size(196, 189);
             this.counterSheet4.TabIndex = 5;
@@ -100,7 +112,7 @@ namespace pokemonCounterThing {
             // counterSheet3
             // 
             this.counterSheet3.Enabled = false;
-            this.counterSheet3.Location = new System.Drawing.Point(416, 12);
+            this.counterSheet3.Location = new System.Drawing.Point(430, 12);
             this.counterSheet3.Name = "counterSheet3";
             this.counterSheet3.Size = new System.Drawing.Size(196, 189);
             this.counterSheet3.TabIndex = 4;
@@ -117,15 +129,39 @@ namespace pokemonCounterThing {
             // counterSheet2
             // 
             this.counterSheet2.Enabled = false;
-            this.counterSheet2.Location = new System.Drawing.Point(214, 12);
+            this.counterSheet2.Location = new System.Drawing.Point(221, 12);
             this.counterSheet2.Name = "counterSheet2";
             this.counterSheet2.Size = new System.Drawing.Size(196, 189);
             this.counterSheet2.TabIndex = 3;
             this.counterSheet2.Visible = false;
             // 
+            // greenScreenBox
+            // 
+            this.greenScreenBox.AutoSize = true;
+            this.greenScreenBox.Location = new System.Drawing.Point(12, 189);
+            this.greenScreenBox.Name = "greenScreenBox";
+            this.greenScreenBox.Size = new System.Drawing.Size(122, 17);
+            this.greenScreenBox.TabIndex = 9;
+            this.greenScreenBox.Text = "Green Screen Mode";
+            this.greenScreenBox.UseVisualStyleBackColor = true;
+            this.greenScreenBox.CheckedChanged += new System.EventHandler(this.greenScreenBox_CheckedChanged);
+            // 
+            // counterSheet6
+            // 
+            this.counterSheet6.Enabled = false;
+            this.counterSheet6.Location = new System.Drawing.Point(1057, 12);
+            this.counterSheet6.Name = "counterSheet6";
+            this.counterSheet6.Padding = new System.Windows.Forms.Padding(10);
+            this.counterSheet6.Size = new System.Drawing.Size(196, 189);
+            this.counterSheet6.TabIndex = 10;
+            this.counterSheet6.Visible = false;
+            this.counterSheet6.Load += new System.EventHandler(this.counterSheet6_Load);
+            // 
             // mainForm
             // 
-            this.ClientSize = new System.Drawing.Size(301, 257);
+            this.ClientSize = new System.Drawing.Size(1265, 248);
+            this.Controls.Add(this.counterSheet6);
+            this.Controls.Add(this.greenScreenBox);
             this.Controls.Add(this.helpButt);
             this.Controls.Add(this.addCounterSheet);
             this.Controls.Add(this.removeCounterSheet);
@@ -138,7 +174,7 @@ namespace pokemonCounterThing {
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "mainForm";
-            this.Text = "\"The Very EZ Pokemon Reset Counter\" Counter";
+            this.Text = "\"TVEPRC\" Counter - Streamer Edition";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
             this.Load += new System.EventHandler(this.mainForm_Load_1);
             this.Click += new System.EventHandler(this.mainForm_Click);
@@ -155,8 +191,9 @@ namespace pokemonCounterThing {
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e) {
             //Simple warning because I haven't done anyone justice by
             //not learning how to save values and reinsert them
-            if (MessageBox.Show("Remember to write down your numbers! This program doesn't save your counters...yet.\nDo you want to close?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes) {
-                e.Cancel = false;
+            if (MessageBox.Show("Remember to write down your numbers! This program doesn't save your counters...yet.\nDo you want to close?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) {
+            
+                e.Cancel = true;
             }
         }
 
@@ -183,8 +220,14 @@ namespace pokemonCounterThing {
                     break;
 
                 case "G":
+
                     if (counterSheet5.isOn())
                         counterSheet5.incrementCounter();
+                    break;
+
+                case "H":
+                    if (counterSheet6.isOn())
+                        counterSheet6.incrementCounter();
                     break;
             }
         }
@@ -198,17 +241,16 @@ namespace pokemonCounterThing {
         }
 
         private void addCounterSheet_Click(object sender, EventArgs e) {
-            if (userContPanCount < 5) {
+            if (userContPanCount < 6) {
                 switch (userContPanCount) {
                     case 0:
                         counterSheet2.Visible = true;
                         counterSheet2.Enabled = true;
                         counterSheet2.changeCounterSheetState(true);
                         userContPanCount++;
-                        addCounterSheet.Location = new Point(416, 86);
                         removeCounterSheet.Enabled = true;
                         removeCounterSheet.Visible = true;
-                        ClientSize = new Size(510, 257);
+                        ClientSize = new Size(432, 257);
                         break;
 
                     case 1:
@@ -216,8 +258,7 @@ namespace pokemonCounterThing {
                         counterSheet3.Enabled = true;
                         counterSheet3.changeCounterSheetState(true);
                         userContPanCount++;
-                        addCounterSheet.Location = new Point(27, 311);
-                        ClientSize = new Size(624, 420);
+                        ClientSize = new Size(648, 257);
                         break;
 
                     case 2:
@@ -225,7 +266,7 @@ namespace pokemonCounterThing {
                         counterSheet4.Enabled = true;
                         counterSheet4.changeCounterSheetState(true);
                         userContPanCount++;
-                        addCounterSheet.Location = new Point(310, 311);
+                        ClientSize = new Size(864, 257);
                         break;
 
                     case 3:
@@ -233,8 +274,15 @@ namespace pokemonCounterThing {
                         counterSheet5.Enabled = true;
                         counterSheet5.changeCounterSheetState(true);
                         userContPanCount++;
+                        ClientSize = new Size(1080, 257);
+                        break;
+                    case 4:
+                        counterSheet6.Visible = true;
+                        counterSheet6.Enabled = true;
+                        counterSheet6.changeCounterSheetState(true);
+                        userContPanCount++;
                         addCounterSheet.Enabled = false;
-                        addCounterSheet.Visible = false;
+                        ClientSize = new Size(1281, 257);
                         break;
                 }
             }
@@ -245,15 +293,25 @@ namespace pokemonCounterThing {
             }
             else {
                 switch (userContPanCount) {
+                    case 5:
+                        counterSheet6.Enabled = false;
+                        counterSheet6.Visible = false;
+                        counterSheet2.changeCounterSheetState(false);
+                        userContPanCount--;
+                        addCounterSheet.Enabled = true;
+                        addCounterSheet.Visible = true;
+                        ClientSize = new Size(1080, 257);
+                        break;
+
                     case 4:
                         counterSheet5.Enabled = false;
                         counterSheet5.Visible = false;
                         counterSheet2.changeCounterSheetState(false);
                         userContPanCount--;
-                        addCounterSheet.Location = new Point(310, 311);
                         addCounterSheet.Enabled = true;
                         addCounterSheet.Visible = true;
-                        ClientSize = new Size(624, 420);
+                        ClientSize = new Size(864, 257);
+                        
                         break;
 
                     case 3:
@@ -261,8 +319,7 @@ namespace pokemonCounterThing {
                         counterSheet4.Visible = false;
                         counterSheet4.changeCounterSheetState(false);
                         userContPanCount--;
-                        addCounterSheet.Location = new Point(624, 311);
-                        ClientSize = new Size(624, 257);
+                        ClientSize = new Size(648, 257);
                         break;
 
                     case 2:
@@ -270,8 +327,7 @@ namespace pokemonCounterThing {
                         counterSheet3.Visible = false;
                         counterSheet3.changeCounterSheetState(false);
                         userContPanCount--;
-                        addCounterSheet.Location = new Point(416, 86);
-                        ClientSize = new Size(510, 257);
+                        ClientSize = new Size(432, 257);
                         break;
 
                     case 1:
@@ -279,10 +335,9 @@ namespace pokemonCounterThing {
                         counterSheet2.Visible = false;
                         counterSheet2.changeCounterSheetState(false);
                         userContPanCount--;
-                        addCounterSheet.Location = new Point(214, 86);
                         removeCounterSheet.Enabled = false;
                         removeCounterSheet.Visible = false;
-                        ClientSize = new Size(301, 257);
+                        ClientSize = new Size(216, 257);
                         break;
                 }
             }
@@ -303,6 +358,16 @@ namespace pokemonCounterThing {
         private void helpButt_Click(object sender, EventArgs e) {
             helpKeyboardForm helpBox = new helpKeyboardForm();
             helpBox.ShowDialog();
+
+        }
+
+        private void greenScreenBox_CheckedChanged(object sender, EventArgs e)
+        {
+            counterSheet1.set_greenScreenMode(greenScreenBox.Checked);
+        }
+
+        private void counterSheet6_Load(object sender, EventArgs e)
+        {
 
         }
     }

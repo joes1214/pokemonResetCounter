@@ -25,6 +25,8 @@
         private counterSheet counterSheet5;
         private System.Windows.Forms.Button removeCounterSheet;
         private System.Windows.Forms.Button helpButt;
+        private System.Windows.Forms.CheckBox greenScreenBox;
+        private counterSheet counterSheet6;
     }
 }
 

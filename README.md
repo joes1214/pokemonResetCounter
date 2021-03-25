@@ -4,7 +4,7 @@ A GUI program that counts the amount of times someone has reset a Pokemon Game. 
 
 As it currently stands, the current way to count each form is by using its desginated key. 
 
-From the first form to the last: A, S, D, F, G
+From the first form to the last: A, S, D, F, G, H
 
 In order to start counting, the "Keyboard Count" button must be checked. 
 
@@ -12,3 +12,4 @@ Future Plans
 -----
 * Have a save feature to save current settings in the name and counter.
 * Change keyboard shortcuts
+* Button to split the counter sheets into 2x3 instead of 1x6
