@@ -30,6 +30,8 @@
             this.resetButt = new System.Windows.Forms.Button();
             this.decrementButt = new System.Windows.Forms.Button();
             this.focusLabel = new System.Windows.Forms.Label();
+            this.incrementValue = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.incrementValue)).BeginInit();
             this.SuspendLayout();
             // 
             // pkmnGameName
@@ -59,6 +61,7 @@
             // setStartingVal
             // 
             this.setStartingVal.Location = new System.Drawing.Point(16, 97);
+            this.setStartingVal.MaxLength = 2;
             this.setStartingVal.Name = "setStartingVal";
             this.setStartingVal.Size = new System.Drawing.Size(100, 20);
             this.setStartingVal.TabIndex = 3;
@@ -77,9 +80,9 @@
             // 
             // resetButt
             // 
-            this.resetButt.Location = new System.Drawing.Point(61, 133);
+            this.resetButt.Location = new System.Drawing.Point(122, 133);
             this.resetButt.Name = "resetButt";
-            this.resetButt.Size = new System.Drawing.Size(75, 35);
+            this.resetButt.Size = new System.Drawing.Size(58, 35);
             this.resetButt.TabIndex = 5;
             this.resetButt.Text = "Reset";
             this.resetButt.UseVisualStyleBackColor = true;
@@ -106,10 +109,20 @@
             this.focusLabel.Text = "      ";
             this.focusLabel.Click += new System.EventHandler(this.focusLabel_Click);
             // 
+            // incrementValue
+            // 
+            this.incrementValue.Enabled = false;
+            this.incrementValue.Location = new System.Drawing.Point(16, 148);
+            this.incrementValue.Name = "incrementValue";
+            this.incrementValue.Size = new System.Drawing.Size(100, 20);
+            this.incrementValue.TabIndex = 8;
+            this.incrementValue.ValueChanged += new System.EventHandler(this.incrementValue_ValueChanged);
+            // 
             // counterSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.incrementValue);
             this.Controls.Add(this.focusLabel);
             this.Controls.Add(this.decrementButt);
             this.Controls.Add(this.resetButt);
@@ -122,6 +135,7 @@
             this.Load += new System.EventHandler(this.counterSheet_Load);
             this.Click += new System.EventHandler(this.counterSheet_Click);
             this.DoubleClick += new System.EventHandler(this.counterSheet_Click);
+            ((System.ComponentModel.ISupportInitialize)(this.incrementValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +150,6 @@
         private System.Windows.Forms.Button resetButt;
         private System.Windows.Forms.Button decrementButt;
         private System.Windows.Forms.Label focusLabel;
+        private System.Windows.Forms.NumericUpDown incrementValue;
     }
 }

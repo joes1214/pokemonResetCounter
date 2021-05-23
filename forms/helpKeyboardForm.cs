@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace pokemonCounterThing {
+namespace pokemonCounterThing 
+{
     public partial class helpKeyboardForm : Form {
         public helpKeyboardForm() {
             InitializeComponent();
@@ -22,6 +23,12 @@ namespace pokemonCounterThing {
         private void helpExplainBox_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void setKeys_Click(object sender, EventArgs e)
+        {
+            customKeyboardInputForm inputForm = new customKeyboardInputForm();
+            inputForm.ShowDialog();
         }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 namespace pokemonCounterThing {
     public partial class counterSheet : UserControl {
         private int resetCounter = 0;
+        private int incrementBy = 1;
         private bool turnedOn = false;
 
         public counterSheet() {
@@ -19,7 +20,7 @@ namespace pokemonCounterThing {
         }
 
         public void incrementCounter() {
-            resetCounter++;
+            resetCounter += incrementBy;
             resetCounterBox.Text = resetCounter.ToString();
         }
 
@@ -97,6 +98,11 @@ namespace pokemonCounterThing {
                 resetCounterBox.BackColor = Color.FromArgb(0, 255, 0);
             else
                 resetCounterBox.BackColor = SystemColors.Control;
+        }
+
+        private void incrementValue_ValueChanged(object sender, EventArgs e)
+        {
+            //increment the value from this box to the incrementBy value
         }
     }
 }
