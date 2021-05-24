@@ -10,41 +10,53 @@ using System.Windows.Forms;
 /*
  TODO:
     -Give user option to make text bold/change font i guess too - ????
-    -Custom Keyboard input options (user defined) - In Progress***
+    -Custom Keyboard input options (user defined) - Done, Kinda
     -6th Slot - Done 
-    -Set an "Incremnet By", instead of adding by 1, add by 2 or 6 - In progress ***
+    -Set an "Incremnet By", instead of adding by 1, add by 2 or 6 - Done
+
     -save the previous counts - Not in progress, but the option is there **
     -load the previous counts - ^^^^^
     
-    -Menu strip - I mean it's there, but disabled on release build. Doesn't function much
+    -Menu strip - More functional, still cant save and load
     -Optimize and clean up the code - not really in progress xd
      
      */
 
 namespace pokemonCounterThing {
     public partial class mainForm : Form {
-        //private string[] cusKeyInput;
-        //private string test = "";
+
+        private short userContPanCount = 0;
+        private static Keys[] KeyValArr = {Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, Keys.H };
+
         public mainForm() {
             
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             ClientSize = new Size(216, 290);
-
-            //this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.mainForm_KeyDown);
+            
         }
 
+        public static Keys getKeyValArr(int indexVal)
+        {
+            return KeyValArr[indexVal];
+        }
 
+        public static string getKeyValArrString(int indexVal)
+        {
+            return KeyValArr[indexVal].ToString();
+        }
 
-        private short userContPanCount = 0;
+        public static void setKeyValArr(Keys keyVal, int indexVal)
+        {
+            KeyValArr[indexVal] = keyVal;
+        }
 
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.isCounting = new System.Windows.Forms.CheckBox();
             this.addCounterSheet = new System.Windows.Forms.Button();
             this.removeCounterSheet = new System.Windows.Forms.Button();
-            this.helpButt = new System.Windows.Forms.Button();
             this.greenScreenBox = new System.Windows.Forms.CheckBox();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.mainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,9 +91,9 @@ namespace pokemonCounterThing {
             // 
             this.addCounterSheet.Location = new System.Drawing.Point(135, 225);
             this.addCounterSheet.Name = "addCounterSheet";
-            this.addCounterSheet.Size = new System.Drawing.Size(73, 23);
+            this.addCounterSheet.Size = new System.Drawing.Size(73, 50);
             this.addCounterSheet.TabIndex = 2;
-            this.addCounterSheet.Text = "More games";
+            this.addCounterSheet.Text = "More games\nto count";
             this.addCounterSheet.UseVisualStyleBackColor = true;
             this.addCounterSheet.Click += new System.EventHandler(this.addCounterSheet_Click);
             // 
@@ -90,22 +102,12 @@ namespace pokemonCounterThing {
             this.removeCounterSheet.Enabled = false;
             this.removeCounterSheet.Location = new System.Drawing.Point(216, 225);
             this.removeCounterSheet.Name = "removeCounterSheet";
-            this.removeCounterSheet.Size = new System.Drawing.Size(75, 50);
+            this.removeCounterSheet.Size = new System.Drawing.Size(73, 50);
             this.removeCounterSheet.TabIndex = 7;
             this.removeCounterSheet.Text = "Less games to count";
             this.removeCounterSheet.UseVisualStyleBackColor = true;
             this.removeCounterSheet.Visible = false;
             this.removeCounterSheet.Click += new System.EventHandler(this.removeCounterSheet_Click);
-            // 
-            // helpButt
-            // 
-            this.helpButt.Location = new System.Drawing.Point(135, 252);
-            this.helpButt.Name = "helpButt";
-            this.helpButt.Size = new System.Drawing.Size(73, 23);
-            this.helpButt.TabIndex = 8;
-            this.helpButt.Text = "Help?";
-            this.helpButt.UseVisualStyleBackColor = true;
-            this.helpButt.Click += new System.EventHandler(this.helpButt_Click);
             // 
             // greenScreenBox
             // 
@@ -121,7 +123,6 @@ namespace pokemonCounterThing {
             // mainMenuStrip
             // 
             this.mainMenuStrip.BackColor = System.Drawing.SystemColors.Control;
-            this.mainMenuStrip.Enabled = false;
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mainToolStripMenuItem,
             this.helpToolStripMenuItem});
@@ -144,27 +145,31 @@ namespace pokemonCounterThing {
             // 
             // saveNumbersToolStripMenuItem
             // 
+            this.saveNumbersToolStripMenuItem.Enabled = false;
             this.saveNumbersToolStripMenuItem.Name = "saveNumbersToolStripMenuItem";
-            this.saveNumbersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveNumbersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveNumbersToolStripMenuItem.Text = "Save Numbers";
             // 
             // importNumbersToolStripMenuItem
             // 
+            this.importNumbersToolStripMenuItem.Enabled = false;
             this.importNumbersToolStripMenuItem.Name = "importNumbersToolStripMenuItem";
-            this.importNumbersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.importNumbersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importNumbersToolStripMenuItem.Text = "Import Numbers";
             // 
             // resetAllToolStripMenuItem
             // 
             this.resetAllToolStripMenuItem.Name = "resetAllToolStripMenuItem";
-            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.resetAllToolStripMenuItem.Text = "Reset All";
+            this.resetAllToolStripMenuItem.Click += new System.EventHandler(this.resetAllToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -198,7 +203,6 @@ namespace pokemonCounterThing {
             this.counterSheet6.Size = new System.Drawing.Size(196, 189);
             this.counterSheet6.TabIndex = 10;
             this.counterSheet6.Visible = false;
-            this.counterSheet6.Load += new System.EventHandler(this.counterSheet6_Load);
             // 
             // counterSheet5
             // 
@@ -233,7 +237,6 @@ namespace pokemonCounterThing {
             this.counterSheet1.Name = "counterSheet1";
             this.counterSheet1.Size = new System.Drawing.Size(196, 189);
             this.counterSheet1.TabIndex = 0;
-            this.counterSheet1.Load += new System.EventHandler(this.counterSheet1_Load);
             // 
             // counterSheet2
             // 
@@ -254,7 +257,6 @@ namespace pokemonCounterThing {
             this.Controls.Add(this.counterSheet5);
             this.Controls.Add(this.counterSheet6);
             this.Controls.Add(this.greenScreenBox);
-            this.Controls.Add(this.helpButt);
             this.Controls.Add(this.addCounterSheet);
             this.Controls.Add(this.removeCounterSheet);
             this.Controls.Add(this.isCounting);
@@ -265,7 +267,6 @@ namespace pokemonCounterThing {
             this.Name = "mainForm";
             this.Text = "\"TVEPRC\" Counter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
-            this.Load += new System.EventHandler(this.mainForm_Load_1);
             this.Click += new System.EventHandler(this.mainForm_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainForm_KeyDown);
             this.mainMenuStrip.ResumeLayout(false);
@@ -274,11 +275,6 @@ namespace pokemonCounterThing {
             this.PerformLayout();
 
         }
-
-        private void mainForm_Load(object sender, EventArgs e) {
-
-        }
-
         private void mainForm_FormClosing(object sender, FormClosingEventArgs e) {
             //Simple warning because I haven't done anyone justice by
             //not learning how to save values and reinsert them
@@ -287,40 +283,31 @@ namespace pokemonCounterThing {
                 e.Cancel = true;
             }
         }
+        private bool isSame(Keys Key1, Keys Key2)
+        {
+            if (Key1 == Key2)
+                return true;
 
+            return false;
+        }
         private void mainForm_KeyDown(object sender, KeyEventArgs e) {
+            if(isSame(KeyValArr[0], e.KeyData))
+                counterSheet1.incrementCounter();
 
-            switch (e.KeyCode.ToString()) {
-                case "A":
-                    counterSheet1.incrementCounter();
-                    break;
+            if (isSame(KeyValArr[1], e.KeyData))
+                counterSheet2.incrementCounter();
 
-                case "S":
-                    if (counterSheet2.isOn())
-                        counterSheet2.incrementCounter();
-                    break;
+            if (isSame(KeyValArr[2], e.KeyData))
+                counterSheet3.incrementCounter();
 
-                case "D":
-                    if (counterSheet3.isOn())
-                        counterSheet3.incrementCounter();
-                    break;
+            if (isSame(KeyValArr[3], e.KeyData))
+                counterSheet4.incrementCounter();
 
-                case "F":
-                    if (counterSheet4.isOn())
-                        counterSheet4.incrementCounter();
-                    break;
+            if (isSame(KeyValArr[4], e.KeyData))
+                counterSheet5.incrementCounter();
 
-                case "G":
-
-                    if (counterSheet5.isOn())
-                        counterSheet5.incrementCounter();
-                    break;
-
-                case "H":
-                    if (counterSheet6.isOn())
-                        counterSheet6.incrementCounter();
-                    break;
-            }
+            if (isSame(KeyValArr[5], e.KeyData))
+                counterSheet6.incrementCounter();
         }
 
         private void isCounting_CheckedChanged(object sender, EventArgs e) {
@@ -447,21 +434,6 @@ namespace pokemonCounterThing {
         private void mainForm_Click(object sender, EventArgs e) {
             counterSheet1.defocusText();
         }
-
-        private void counterSheet1_Load(object sender, EventArgs e) {
-
-        }
-
-        private void mainForm_Load_1(object sender, EventArgs e) {
-            
-        }
-
-        private void helpButt_Click(object sender, EventArgs e) {
-            helpKeyboardForm helpBox = new helpKeyboardForm();
-            helpBox.ShowDialog();
-
-        }
-
         private void greenScreenBox_CheckedChanged(object sender, EventArgs e)
         {
             counterSheet1.set_greenScreenMode(greenScreenBox.Checked);
@@ -470,11 +442,6 @@ namespace pokemonCounterThing {
             counterSheet4.set_greenScreenMode(greenScreenBox.Checked);
             counterSheet5.set_greenScreenMode(greenScreenBox.Checked);
             counterSheet6.set_greenScreenMode(greenScreenBox.Checked);
-        }
-
-        private void counterSheet6_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void helpToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -486,7 +453,31 @@ namespace pokemonCounterThing {
         private void keybindsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             customKeyboardInputForm inputForm = new customKeyboardInputForm();
-            inputForm.ShowDialog();
+            inputForm.Show();
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void resetAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Reminder we don't save numbers yet. Are you sure?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No){}
+            else
+            {
+                counterSheet1.resetToZero();
+                counterSheet2.resetToZero();
+                counterSheet3.resetToZero();
+                counterSheet4.resetToZero();
+                counterSheet5.resetToZero();
+                counterSheet6.resetToZero();
+            }
+        }
+
+        private void counterSheet1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

@@ -11,7 +11,10 @@ namespace pokemonCounterThing {
     public partial class counterSheet : UserControl {
         private int resetCounter = 0;
         private int incrementBy = 1;
+        private int decrementBy = 1;
         private bool turnedOn = false;
+
+        public int sheetNumber = 0;
 
         public counterSheet() {
             InitializeComponent();
@@ -21,6 +24,11 @@ namespace pokemonCounterThing {
 
         public void incrementCounter() {
             resetCounter += incrementBy;
+            if (resetCounter >= 1000000)
+            {
+                MessageBox.Show("CHIEF HOW DO YOU HAVE A MILLION COUNTS??\nOk so, we're not counting any higher.\nWrite it down and start from 0.", "ME MILLIONTH DOLLAR!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                resetCounter = 1000000;
+            }
             resetCounterBox.Text = resetCounter.ToString();
         }
 
@@ -29,8 +37,15 @@ namespace pokemonCounterThing {
             resetCounterBox.Text = resetCounter.ToString();
         }
 
+        public string getLabelString()
+        {
+            return pkmnGameName.Text;
+        }
+
         private void pkmnGameName_TextChanged(object sender, EventArgs e) {
             this.ActiveControl = null;
+
+            //make it so when Keyboard Counting starts disable the ability to edit this and Starting Value
         }
 
         private void decrementButt_Click(object sender, EventArgs e) {
@@ -40,15 +55,6 @@ namespace pokemonCounterThing {
             }
             resetCounterBox.Text = resetCounter.ToString();
         }
-
-        private void resetCounterBox_TextChanged(object sender, EventArgs e) {
-
-        }
-
-        private void setStartingVal_TextChanged(object sender, EventArgs e) {
-            
-        }
-
 
         /*Function tries to parse the setStrartingVal textbox and
           tries to put it in the resetCounterBox. Added tempVal so
@@ -68,8 +74,12 @@ namespace pokemonCounterThing {
             resetCounter = 0;
             resetCounterBox.Text = resetCounter.ToString();
         }
-
         
+        public void resetToZero()
+        {
+            resetCounter = 0;
+            resetCounterBox.Text = resetCounter.ToString();
+        }
         private void focusLabel_Click(object sender, EventArgs e) {
 
         }
@@ -103,6 +113,19 @@ namespace pokemonCounterThing {
         private void incrementValue_ValueChanged(object sender, EventArgs e)
         {
             //increment the value from this box to the incrementBy value
+            incrementBy = (int)incrementValue.Value;
+            decrementBy = (int)incrementValue.Value;
+            decreaseBy.Text = "-" + (int)incrementValue.Value;
+        }
+
+        private void decreaseBy_Click(object sender, EventArgs e)
+        {
+            resetCounter -= decrementBy;
+            if (resetCounter < 0)
+            {
+                resetCounter = 0;
+            }
+            resetCounterBox.Text = resetCounter.ToString();
         }
     }
 }

@@ -31,6 +31,8 @@
             this.decrementButt = new System.Windows.Forms.Button();
             this.focusLabel = new System.Windows.Forms.Label();
             this.incrementValue = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.decreaseBy = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.incrementValue)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,24 +51,24 @@
             this.resetCounterBox.BackColor = System.Drawing.SystemColors.Control;
             this.resetCounterBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetCounterBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.resetCounterBox.Location = new System.Drawing.Point(52, 46);
+            this.resetCounterBox.Location = new System.Drawing.Point(59, 46);
             this.resetCounterBox.Name = "resetCounterBox";
             this.resetCounterBox.ReadOnly = true;
-            this.resetCounterBox.Size = new System.Drawing.Size(128, 45);
+            this.resetCounterBox.Size = new System.Drawing.Size(121, 45);
             this.resetCounterBox.TabIndex = 1;
             this.resetCounterBox.Text = "0";
             this.resetCounterBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.resetCounterBox.TextChanged += new System.EventHandler(this.resetCounterBox_TextChanged);
+            //this.resetCounterBox.TextChanged += new System.EventHandler(this.resetCounterBox_TextChanged);
             // 
             // setStartingVal
             // 
             this.setStartingVal.Location = new System.Drawing.Point(16, 97);
-            this.setStartingVal.MaxLength = 2;
+            this.setStartingVal.MaxLength = 6;
             this.setStartingVal.Name = "setStartingVal";
             this.setStartingVal.Size = new System.Drawing.Size(100, 20);
             this.setStartingVal.TabIndex = 3;
             this.setStartingVal.Text = "Set Starting Value";
-            this.setStartingVal.TextChanged += new System.EventHandler(this.setStartingVal_TextChanged);
+            //this.setStartingVal.TextChanged += new System.EventHandler(this.setStartingVal_TextChanged);
             // 
             // setStartValButt
             // 
@@ -84,16 +86,16 @@
             this.resetButt.Name = "resetButt";
             this.resetButt.Size = new System.Drawing.Size(58, 35);
             this.resetButt.TabIndex = 5;
-            this.resetButt.Text = "Reset";
+            this.resetButt.Text = "Reset\nCounter";
             this.resetButt.UseVisualStyleBackColor = true;
             this.resetButt.Click += new System.EventHandler(this.resetButt_Click);
             // 
             // decrementButt
             // 
             this.decrementButt.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.decrementButt.Location = new System.Drawing.Point(16, 53);
+            this.decrementButt.Location = new System.Drawing.Point(15, 46);
             this.decrementButt.Name = "decrementButt";
-            this.decrementButt.Size = new System.Drawing.Size(30, 30);
+            this.decrementButt.Size = new System.Drawing.Size(38, 22);
             this.decrementButt.TabIndex = 2;
             this.decrementButt.Text = "-1";
             this.decrementButt.UseVisualStyleBackColor = true;
@@ -111,17 +113,53 @@
             // 
             // incrementValue
             // 
-            this.incrementValue.Enabled = false;
             this.incrementValue.Location = new System.Drawing.Point(16, 148);
+            this.incrementValue.Maximum = new decimal(new int[] {
+            99,
+            0,
+            0,
+            0});
+            this.incrementValue.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.incrementValue.Name = "incrementValue";
             this.incrementValue.Size = new System.Drawing.Size(100, 20);
             this.incrementValue.TabIndex = 8;
+            this.incrementValue.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.incrementValue.ValueChanged += new System.EventHandler(this.incrementValue_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(13, 131);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Increment By:";
+            // 
+            // decreaseBy
+            // 
+            this.decreaseBy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.decreaseBy.Location = new System.Drawing.Point(16, 69);
+            this.decreaseBy.Name = "decreaseBy";
+            this.decreaseBy.Size = new System.Drawing.Size(37, 22);
+            this.decreaseBy.TabIndex = 10;
+            this.decreaseBy.Text = "-1";
+            this.decreaseBy.UseVisualStyleBackColor = true;
+            this.decreaseBy.Click += new System.EventHandler(this.decreaseBy_Click);
             // 
             // counterSheet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.decreaseBy);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.incrementValue);
             this.Controls.Add(this.focusLabel);
             this.Controls.Add(this.decrementButt);
@@ -151,5 +189,7 @@
         private System.Windows.Forms.Button decrementButt;
         private System.Windows.Forms.Label focusLabel;
         private System.Windows.Forms.NumericUpDown incrementValue;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button decreaseBy;
     }
 }

@@ -28,7 +28,6 @@
 
         private System.Windows.Forms.Button addCounterSheet;
         private System.Windows.Forms.Button removeCounterSheet;
-        private System.Windows.Forms.Button helpButt;
 
 
         private System.Windows.Forms.MenuStrip mainMenuStrip;

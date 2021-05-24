@@ -14,21 +14,7 @@ namespace pokemonCounterThing
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-        }
-
-        private void helpKeyboardForm_Load(object sender, EventArgs e) {
-
-        }
-
-        private void helpExplainBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void setKeys_Click(object sender, EventArgs e)
-        {
-            customKeyboardInputForm inputForm = new customKeyboardInputForm();
-            inputForm.ShowDialog();
+            this.MinimizeBox = false;
         }
     }
 }
