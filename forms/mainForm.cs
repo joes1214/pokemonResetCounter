@@ -26,7 +26,8 @@ namespace pokemonCounterThing {
     public partial class mainForm : Form {
 
         private short userContPanCount = 0;
-        private static Keys[] KeyValArr = {Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, Keys.H };
+        //private static Keys[] KeyValArr = {Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, Keys.H };
+        private static Keys[] KeyValArr = new Keys[6];
 
         public mainForm() {
             
@@ -34,6 +35,7 @@ namespace pokemonCounterThing {
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             ClientSize = new Size(216, 290);
+            getKeybinds();
             
         }
 
@@ -147,27 +149,27 @@ namespace pokemonCounterThing {
             // 
             this.saveNumbersToolStripMenuItem.Enabled = false;
             this.saveNumbersToolStripMenuItem.Name = "saveNumbersToolStripMenuItem";
-            this.saveNumbersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saveNumbersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.saveNumbersToolStripMenuItem.Text = "Save Numbers";
             // 
             // importNumbersToolStripMenuItem
             // 
             this.importNumbersToolStripMenuItem.Enabled = false;
             this.importNumbersToolStripMenuItem.Name = "importNumbersToolStripMenuItem";
-            this.importNumbersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.importNumbersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.importNumbersToolStripMenuItem.Text = "Import Numbers";
             // 
             // resetAllToolStripMenuItem
             // 
             this.resetAllToolStripMenuItem.Name = "resetAllToolStripMenuItem";
-            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.resetAllToolStripMenuItem.Text = "Reset All";
             this.resetAllToolStripMenuItem.Click += new System.EventHandler(this.resetAllToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -177,20 +179,20 @@ namespace pokemonCounterThing {
             this.keybindsToolStripMenuItem,
             this.helpToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.helpToolStripMenuItem.Text = "Preferences";
             // 
             // keybindsToolStripMenuItem
             // 
             this.keybindsToolStripMenuItem.Name = "keybindsToolStripMenuItem";
-            this.keybindsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.keybindsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.keybindsToolStripMenuItem.Text = "Keybinds";
             this.keybindsToolStripMenuItem.Click += new System.EventHandler(this.keybindsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
             // 
@@ -453,7 +455,8 @@ namespace pokemonCounterThing {
         private void keybindsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             customKeyboardInputForm inputForm = new customKeyboardInputForm();
-            inputForm.Show();
+            inputForm.ShowDialog();
+            setKeybinds();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -478,6 +481,27 @@ namespace pokemonCounterThing {
         private void counterSheet1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void setKeybinds()
+        {
+            Properties.Settings.Default.csKeybind0 = KeyValArr[0];
+            Properties.Settings.Default.csKeybind1 = KeyValArr[1];
+            Properties.Settings.Default.csKeybind2 = KeyValArr[2];
+            Properties.Settings.Default.csKeybind3 = KeyValArr[3];
+            Properties.Settings.Default.csKeybind4 = KeyValArr[4];
+            Properties.Settings.Default.csKeybind5 = KeyValArr[5];
+            Properties.Settings.Default.Save();
+        }
+
+        private void getKeybinds()
+        {
+            KeyValArr[0] = Properties.Settings.Default.csKeybind0;
+            KeyValArr[1] = Properties.Settings.Default.csKeybind1;
+            KeyValArr[2] = Properties.Settings.Default.csKeybind2;
+            KeyValArr[3] = Properties.Settings.Default.csKeybind3;
+            KeyValArr[4] = Properties.Settings.Default.csKeybind4;
+            KeyValArr[5] = Properties.Settings.Default.csKeybind5;
         }
     }
 

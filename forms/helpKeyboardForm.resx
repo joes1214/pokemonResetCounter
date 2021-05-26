@@ -118,12 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="helpExplainBox.Text" xml:space="preserve">
-    <value>Hey, if you've clicked help, you probably have no idea how to use this program. That is ok, I'm here to help you know what to do.
-So basically you have up 6 forms for counting. Each form has it's own designated button to start ticking. From first to fifth form, it is:
+    <value>If you've clicked help you probably have no idea how to use this program. That's ok, that's why I made this form xd.
 
-A, S, D,F, G, H
 
-Some day I'll let you add the option to set your own keybindings.</value>
+You have 6 sheets you can count from and at default it's set to 1. You can hit "More Games to count" to add more.
+
+From there you can set what value you'd want to count from as well as how you want to increment (e.g add by 1, or 6).
+
+To start counting you select "Start Keyboard count" and you will be able to count by pressing your keyboard. By default the keybinds are [A, S, D, F, G, H]
+
+If you want to reset the number back to Zero, simply hit the reset button.
+
+If there was an error or mistake or some unforseen change in value increment, you can subtract by -1 or -x. x being the value you set to increment.
+
+To change the keybinds, go to Preferences -&gt; Keybinds and select the keys you'd like to use.
+
+To reset all the values at once, go to Menu -&gt; Reset All.
+
+If you wish to use this on a stream, you have the option to set "Green screen Mode" which makes the background color of the numbers Green.
+Simply set the streaming software to chromakey the green and crop out or have an overlay to cover the rest of the program (It's not perfect and still looks kinda ugly, sorry :( ).</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">

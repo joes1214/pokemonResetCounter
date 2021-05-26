@@ -85,7 +85,7 @@ namespace pokemonCounterThing
 
         private void defaultReset_Click(object sender, EventArgs e)
         {
-            mainForm.setKeyValArr(Keys.A,0);
+            mainForm.setKeyValArr(Keys.A, 0);
             mainForm.setKeyValArr(Keys.S, 1);
             mainForm.setKeyValArr(Keys.D, 2);
             mainForm.setKeyValArr(Keys.F, 3);
