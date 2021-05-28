@@ -10,23 +10,19 @@ using System.Windows.Forms;
 /*
  TODO:
     -Give user option to make text bold/change font i guess too - ????
-    -Custom Keyboard input options (user defined) - Done, Kinda
-    -6th Slot - Done 
-    -Set an "Incremnet By", instead of adding by 1, add by 2 or 6 - Done
+    -Custom Keyboard input options (user defined) - Done, fully, I think
 
     -save the previous counts - Not in progress, but the option is there **
     -load the previous counts - ^^^^^
     
     -Menu strip - More functional, still cant save and load
     -Optimize and clean up the code - not really in progress xd
-     
      */
 
 namespace pokemonCounterThing {
     public partial class mainForm : Form {
 
         private short userContPanCount = 0;
-        //private static Keys[] KeyValArr = {Keys.A, Keys.S, Keys.D, Keys.F, Keys.G, Keys.H };
         private static Keys[] KeyValArr = new Keys[6];
 
         public mainForm() {

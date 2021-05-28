@@ -108,7 +108,7 @@ namespace pokemonCounterThing
             this.sheet1Key.ReadOnly = true;
             this.sheet1Key.Size = new System.Drawing.Size(100, 20);
             this.sheet1Key.TabIndex = 6;
-            this.sheet1Key.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sheet1Key_MouseDown);
+            this.sheet1Key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sheet1Key_KeyDown);
             // 
             // sheet2Key
             // 
@@ -118,7 +118,7 @@ namespace pokemonCounterThing
             this.sheet2Key.ReadOnly = true;
             this.sheet2Key.Size = new System.Drawing.Size(100, 20);
             this.sheet2Key.TabIndex = 6;
-            this.sheet2Key.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sheet2Key_MouseDown);
+            this.sheet2Key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sheet2Key_KeyDown);
             // 
             // sheet3Key
             // 
@@ -128,7 +128,8 @@ namespace pokemonCounterThing
             this.sheet3Key.ReadOnly = true;
             this.sheet3Key.Size = new System.Drawing.Size(100, 20);
             this.sheet3Key.TabIndex = 6;
-            this.sheet3Key.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sheet3Key_MouseDown);
+            this.sheet3Key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sheet3Key_KeyDown);
+
             // 
             // sheet4Key
             // 
@@ -138,7 +139,8 @@ namespace pokemonCounterThing
             this.sheet4Key.ReadOnly = true;
             this.sheet4Key.Size = new System.Drawing.Size(100, 20);
             this.sheet4Key.TabIndex = 6;
-            this.sheet4Key.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sheet4Key_MouseDown);
+            this.sheet4Key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sheet4Key_KeyDown);
+
             // 
             // sheet5Key
             // 
@@ -148,7 +150,8 @@ namespace pokemonCounterThing
             this.sheet5Key.ReadOnly = true;
             this.sheet5Key.Size = new System.Drawing.Size(100, 20);
             this.sheet5Key.TabIndex = 6;
-            this.sheet5Key.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sheet5Key_MouseDown);
+            this.sheet5Key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sheet5Key_KeyDown);
+
             // 
             // sheet6Key
             // 
@@ -158,7 +161,8 @@ namespace pokemonCounterThing
             this.sheet6Key.ReadOnly = true;
             this.sheet6Key.Size = new System.Drawing.Size(100, 20);
             this.sheet6Key.TabIndex = 6;
-            this.sheet6Key.MouseDown += new System.Windows.Forms.MouseEventHandler(this.sheet6Key_MouseDown);
+            this.sheet6Key.KeyDown += new System.Windows.Forms.KeyEventHandler(this.sheet6Key_KeyDown);
+
             // 
             // defaultReset
             // 
