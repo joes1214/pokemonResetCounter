@@ -83,13 +83,14 @@ namespace pokemonCounterThing
             for (int x = 0; x < 6; x++)
             {
                 if (keyArrayIndex == x)
+                {
                     x++;
-
-                if (tempKey == mainForm.getKeyValArr(x))
+                }else if (tempKey == mainForm.getKeyValArr(x))
                 {
                     MessageBox.Show("Can't have the same button for\na keybind!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                
             }
 
             mainForm.setKeyValArr(tempKey, keyArrayIndex);

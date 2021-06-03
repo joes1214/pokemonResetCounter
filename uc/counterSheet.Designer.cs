@@ -58,7 +58,6 @@
             this.resetCounterBox.TabIndex = 1;
             this.resetCounterBox.Text = "0";
             this.resetCounterBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            //this.resetCounterBox.TextChanged += new System.EventHandler(this.resetCounterBox_TextChanged);
             // 
             // setStartingVal
             // 
@@ -68,7 +67,6 @@
             this.setStartingVal.Size = new System.Drawing.Size(100, 20);
             this.setStartingVal.TabIndex = 3;
             this.setStartingVal.Text = "Set Starting Value";
-            //this.setStartingVal.TextChanged += new System.EventHandler(this.setStartingVal_TextChanged);
             // 
             // setStartValButt
             // 
