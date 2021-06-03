@@ -307,25 +307,6 @@ namespace pokemonCounterThing {
 
             if (KeyValArr[5] == e.KeyData && counterSheet6.isOn())
                 counterSheet6.incrementCounter();
-
-
-            //if (isSame(KeyValArr[0], e.KeyData))
-            //    counterSheet1.incrementCounter();
-
-            //if (isSame(KeyValArr[1], e.KeyData))
-            //    counterSheet2.incrementCounter();
-
-            //if (isSame(KeyValArr[2], e.KeyData))
-            //    counterSheet3.incrementCounter();
-
-            //if (isSame(KeyValArr[3], e.KeyData))
-            //    counterSheet4.incrementCounter();
-
-            //if (isSame(KeyValArr[4], e.KeyData))
-            //    counterSheet5.incrementCounter();
-
-            //if (isSame(KeyValArr[5], e.KeyData))
-            //    counterSheet6.incrementCounter();
         }
 
         private void isCounting_CheckedChanged(object sender, EventArgs e) {
