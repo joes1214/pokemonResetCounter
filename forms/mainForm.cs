@@ -235,6 +235,7 @@ namespace pokemonCounterThing {
             this.counterSheet1.Name = "counterSheet1";
             this.counterSheet1.Size = new System.Drawing.Size(196, 189);
             this.counterSheet1.TabIndex = 0;
+            this.counterSheet1.changeCounterSheetState(true);
             // 
             // counterSheet2
             // 
@@ -289,23 +290,42 @@ namespace pokemonCounterThing {
             return false;
         }
         private void mainForm_KeyDown(object sender, KeyEventArgs e) {
-            if(isSame(KeyValArr[0], e.KeyData))
+            if(KeyValArr[0] == e.KeyData && counterSheet1.isOn())
                 counterSheet1.incrementCounter();
 
-            if (isSame(KeyValArr[1], e.KeyData))
+            if (KeyValArr[1] == e.KeyData && counterSheet2.isOn())
                 counterSheet2.incrementCounter();
 
-            if (isSame(KeyValArr[2], e.KeyData))
+            if (KeyValArr[2] == e.KeyData && counterSheet3.isOn())
                 counterSheet3.incrementCounter();
 
-            if (isSame(KeyValArr[3], e.KeyData))
+            if (KeyValArr[3] == e.KeyData && counterSheet4.isOn())
                 counterSheet4.incrementCounter();
 
-            if (isSame(KeyValArr[4], e.KeyData))
+            if (KeyValArr[4] == e.KeyData && counterSheet5.isOn())
                 counterSheet5.incrementCounter();
 
-            if (isSame(KeyValArr[5], e.KeyData))
+            if (KeyValArr[5] == e.KeyData && counterSheet6.isOn())
                 counterSheet6.incrementCounter();
+
+
+            //if (isSame(KeyValArr[0], e.KeyData))
+            //    counterSheet1.incrementCounter();
+
+            //if (isSame(KeyValArr[1], e.KeyData))
+            //    counterSheet2.incrementCounter();
+
+            //if (isSame(KeyValArr[2], e.KeyData))
+            //    counterSheet3.incrementCounter();
+
+            //if (isSame(KeyValArr[3], e.KeyData))
+            //    counterSheet4.incrementCounter();
+
+            //if (isSame(KeyValArr[4], e.KeyData))
+            //    counterSheet5.incrementCounter();
+
+            //if (isSame(KeyValArr[5], e.KeyData))
+            //    counterSheet6.incrementCounter();
         }
 
         private void isCounting_CheckedChanged(object sender, EventArgs e) {
