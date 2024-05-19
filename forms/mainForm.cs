@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using pokemonCounterThing.models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 
@@ -19,22 +23,25 @@ using System.Windows.Forms;
     -Optimize and clean up the code - not really in progress xd
      */
 
-namespace pokemonCounterThing {
-    public partial class mainForm : Form {
+namespace pokemonCounterThing
+{
+    public partial class mainForm : Form
+    {
 
         private short userContPanCount = 0;
         private static Keys[] KeyValArr = new Keys[6];
 
-        public mainForm() {
-            
+        public mainForm()
+        {
+
             InitializeComponent();
-           
+
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             ClientSize = new Size(216, 290);
             InitUC();
             getKeybinds();
-            
+
         }
 
         public static Keys getKeyValArr(int indexVal)
@@ -51,7 +58,7 @@ namespace pokemonCounterThing {
         {
             KeyValArr[indexVal] = keyVal;
         }
-        
+
         private void InitUC()
         {
             counterSheet[] counterSheets = new counterSheet[6];
@@ -73,7 +80,8 @@ namespace pokemonCounterThing {
 
         }
 
-        private void InitializeComponent() {
+        private void InitializeComponent()
+        {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
             this.isCounting = new System.Windows.Forms.CheckBox();
             this.addCounterSheet = new System.Windows.Forms.Button();
@@ -167,10 +175,10 @@ namespace pokemonCounterThing {
             // 
             // saveNumbersToolStripMenuItem
             // 
-            this.saveNumbersToolStripMenuItem.Enabled = false;
             this.saveNumbersToolStripMenuItem.Name = "saveNumbersToolStripMenuItem";
             this.saveNumbersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveNumbersToolStripMenuItem.Text = "Save Numbers";
+            this.saveNumbersToolStripMenuItem.Click += new System.EventHandler(this.saveNumbersToolStripMenuItem_Click);
             // 
             // importNumbersToolStripMenuItem
             // 
@@ -218,7 +226,6 @@ namespace pokemonCounterThing {
             // 
             // counterSheet1
             // 
-            this.counterSheet1.Enabled = false;
             this.counterSheet1.Location = new System.Drawing.Point(12, 27);
             this.counterSheet1.Name = "counterSheet1";
             this.counterSheet1.Size = new System.Drawing.Size(196, 189);
@@ -266,10 +273,10 @@ namespace pokemonCounterThing {
             this.counterSheet6.Enabled = false;
             this.counterSheet6.Location = new System.Drawing.Point(1057, 27);
             this.counterSheet6.Name = "counterSheet6";
-            this.counterSheet6.Padding = new System.Windows.Forms.Padding(10);
             this.counterSheet6.Size = new System.Drawing.Size(196, 189);
-            this.counterSheet6.TabIndex = 10;
+            this.counterSheet6.TabIndex = 7;
             this.counterSheet6.Visible = false;
+            this.counterSheet6.Load += new System.EventHandler(this.counterSheet6_Load);
             // 
             // mainForm
             // 
@@ -300,11 +307,13 @@ namespace pokemonCounterThing {
             this.PerformLayout();
 
         }
-        private void mainForm_FormClosing(object sender, FormClosingEventArgs e) {
+        private void mainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
             //Simple warning because I haven't done anyone justice by
             //not learning how to save values and reinsert them
-            if (MessageBox.Show("Remember to write down your numbers! This program doesn't save your counters...yet.\nDo you want to close?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) {
-            
+            if (MessageBox.Show("Remember to write down your numbers! This program doesn't save your counters...yet.\nDo you want to close?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+            {
+
                 e.Cancel = true;
             }
         }
@@ -316,8 +325,9 @@ namespace pokemonCounterThing {
             return false;
         }
 
-        private void mainForm_KeyDown(object sender, KeyEventArgs e) {
-            if(KeyValArr[0] == e.KeyData && counterSheet1.isOn())
+        private void mainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (KeyValArr[0] == e.KeyData && counterSheet1.isOn())
                 counterSheet1.incrementCounter();
 
             if (KeyValArr[1] == e.KeyData && counterSheet2.isOn())
@@ -336,10 +346,14 @@ namespace pokemonCounterThing {
                 counterSheet6.incrementCounter();
         }
 
-        private void isCounting_CheckedChanged(object sender, EventArgs e) {
-            if (isCounting.Checked) {
+        private void isCounting_CheckedChanged(object sender, EventArgs e)
+        {
+            if (isCounting.Checked)
+            {
                 this.KeyPreview = true;
-            } else {
+            }
+            else
+            {
                 this.KeyPreview = false;
             }
         }
@@ -362,9 +376,12 @@ namespace pokemonCounterThing {
 
         /* On click on the button, it will add a sheet
          * there cannot be more than 6 (as I didnt load up more xd)*/
-        private void addCounterSheet_Click(object sender, EventArgs e) {
-            if (userContPanCount < 6) {
-                switch (userContPanCount) {
+        private void addCounterSheet_Click(object sender, EventArgs e)
+        {
+            if (userContPanCount < 6)
+            {
+                switch (userContPanCount)
+                {
                     case 0:
                         TurnOnSheet(counterSheet2);
                         counterSheet2.changeCounterSheetState(true);
@@ -407,11 +424,15 @@ namespace pokemonCounterThing {
 
         /* Opposite of the above function
          * removes a sheet, cannot be less than 0*/
-        private void removeCounterSheet_Click(object sender, EventArgs e) {
-            if (userContPanCount < 0) {
+        private void removeCounterSheet_Click(object sender, EventArgs e)
+        {
+            if (userContPanCount < 0)
+            {
             }
-            else {
-                switch (userContPanCount) {
+            else
+            {
+                switch (userContPanCount)
+                {
                     case 5:
                         TurnOffSheet(counterSheet6);
                         counterSheet2.changeCounterSheetState(false);
@@ -428,7 +449,7 @@ namespace pokemonCounterThing {
                         addCounterSheet.Enabled = true;
                         addCounterSheet.Visible = true;
                         ClientSize = new Size(864, 290);
-                        
+
                         break;
 
                     case 3:
@@ -457,7 +478,8 @@ namespace pokemonCounterThing {
             }
         }
 
-        private void mainForm_Click(object sender, EventArgs e) {
+        private void mainForm_Click(object sender, EventArgs e)
+        {
             counterSheet1.defocusText();
         }
         private void greenScreenBox_CheckedChanged(object sender, EventArgs e)
@@ -490,7 +512,7 @@ namespace pokemonCounterThing {
 
         private void resetAllToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Reminder we don't save numbers yet. Are you sure?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No){}
+            if (MessageBox.Show("Reminder we don't save numbers yet. Are you sure?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No) { }
             else
             {
                 counterSheet1.resetToZero();
@@ -532,9 +554,52 @@ namespace pokemonCounterThing {
         {
             counterSheet1.Visible = true;
             counterSheet1.Enabled = true;
+            counterSheet1.changeCounterSheetState(true);
+
         }
 
         private void mainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveNumbersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Counter cs1 = counterSheet1.counterInfo;
+            Counter cs2 = counterSheet2.counterInfo;
+            Counter cs3 = counterSheet3.counterInfo;
+            Counter cs4 = counterSheet4.counterInfo;
+            Counter cs5 = counterSheet5.counterInfo;
+            Counter cs6 = counterSheet6.counterInfo;
+
+            FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+
+            if (folderDialog.ShowDialog() == DialogResult.OK)
+            {
+                List<Counter> counterList = new List<Counter>
+                {
+                    new Counter {id = 0, increment = cs1.increment, title = cs1.title, startingValue = cs1.startingValue},
+                    new Counter {id = 1, increment = cs2.increment, title = cs2.title, startingValue = cs2.startingValue},
+                    new Counter {id = 2, increment = cs3.increment, title = cs3.title, startingValue = cs3.startingValue},
+                    new Counter {id = 3, increment = cs4.increment, title = cs4.title, startingValue = cs4.startingValue},
+                    new Counter {id = 4, increment = cs5.increment, title = cs5.title, startingValue = cs5.startingValue},
+                    new Counter {id = 5, increment = cs6.increment, title = cs6.title, startingValue = cs6.startingValue}
+                };
+
+                JArray counters = JArray.FromObject(counterList);
+
+                string filePath = Path.Combine(folderDialog.SelectedPath, "data.json");
+
+                string jsonString = counters.ToString();
+
+                File.WriteAllText(filePath, jsonString);
+
+                MessageBox.Show("File Saved.");
+
+            }
+        }
+
+        private void counterSheet6_Load(object sender, EventArgs e)
         {
 
         }
