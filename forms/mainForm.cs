@@ -28,9 +28,11 @@ namespace pokemonCounterThing {
         public mainForm() {
             
             InitializeComponent();
+           
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             ClientSize = new Size(216, 290);
+            InitUC();
             getKeybinds();
             
         }
@@ -49,6 +51,27 @@ namespace pokemonCounterThing {
         {
             KeyValArr[indexVal] = keyVal;
         }
+        
+        private void InitUC()
+        {
+            counterSheet[] counterSheets = new counterSheet[6];
+
+            for (int i = 1; i < 6; i++)
+            {
+                String xyz = "counterSheets" + i.ToString();
+                counterSheets[i] = new counterSheet
+                {
+                    Enabled = true,
+                    Location = new System.Drawing.Point((12 + (i * 209)), 37),
+                    Name = xyz,
+                    Size = new System.Drawing.Size(196, 189),
+                    Visible = true
+                };
+
+            }
+
+
+        }
 
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
@@ -65,12 +88,12 @@ namespace pokemonCounterThing {
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.keybindsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.counterSheet6 = new pokemonCounterThing.counterSheet();
-            this.counterSheet5 = new pokemonCounterThing.counterSheet();
-            this.counterSheet4 = new pokemonCounterThing.counterSheet();
-            this.counterSheet3 = new pokemonCounterThing.counterSheet();
             this.counterSheet1 = new pokemonCounterThing.counterSheet();
             this.counterSheet2 = new pokemonCounterThing.counterSheet();
+            this.counterSheet3 = new pokemonCounterThing.counterSheet();
+            this.counterSheet4 = new pokemonCounterThing.counterSheet();
+            this.counterSheet5 = new pokemonCounterThing.counterSheet();
+            this.counterSheet6 = new pokemonCounterThing.counterSheet();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -126,8 +149,8 @@ namespace pokemonCounterThing {
             this.helpToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(1265, 24);
-            this.mainMenuStrip.TabIndex = 11;
+            this.mainMenuStrip.Size = new System.Drawing.Size(1266, 24);
+            this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
             // mainToolStripMenuItem
@@ -140,32 +163,33 @@ namespace pokemonCounterThing {
             this.mainToolStripMenuItem.Name = "mainToolStripMenuItem";
             this.mainToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.mainToolStripMenuItem.Text = "Menu";
+            this.mainToolStripMenuItem.Click += new System.EventHandler(this.mainToolStripMenuItem_Click);
             // 
             // saveNumbersToolStripMenuItem
             // 
             this.saveNumbersToolStripMenuItem.Enabled = false;
             this.saveNumbersToolStripMenuItem.Name = "saveNumbersToolStripMenuItem";
-            this.saveNumbersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.saveNumbersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.saveNumbersToolStripMenuItem.Text = "Save Numbers";
             // 
             // importNumbersToolStripMenuItem
             // 
             this.importNumbersToolStripMenuItem.Enabled = false;
             this.importNumbersToolStripMenuItem.Name = "importNumbersToolStripMenuItem";
-            this.importNumbersToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.importNumbersToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.importNumbersToolStripMenuItem.Text = "Import Numbers";
             // 
             // resetAllToolStripMenuItem
             // 
             this.resetAllToolStripMenuItem.Name = "resetAllToolStripMenuItem";
-            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.resetAllToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.resetAllToolStripMenuItem.Text = "Reset All";
             this.resetAllToolStripMenuItem.Click += new System.EventHandler(this.resetAllToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -181,16 +205,61 @@ namespace pokemonCounterThing {
             // keybindsToolStripMenuItem
             // 
             this.keybindsToolStripMenuItem.Name = "keybindsToolStripMenuItem";
-            this.keybindsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.keybindsToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.keybindsToolStripMenuItem.Text = "Keybinds";
             this.keybindsToolStripMenuItem.Click += new System.EventHandler(this.keybindsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem1
             // 
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             this.helpToolStripMenuItem1.Click += new System.EventHandler(this.helpToolStripMenuItem1_Click);
+            // 
+            // counterSheet1
+            // 
+            this.counterSheet1.Enabled = false;
+            this.counterSheet1.Location = new System.Drawing.Point(12, 27);
+            this.counterSheet1.Name = "counterSheet1";
+            this.counterSheet1.Size = new System.Drawing.Size(196, 189);
+            this.counterSheet1.TabIndex = 0;
+            this.counterSheet1.Visible = false;
+            // 
+            // counterSheet2
+            // 
+            this.counterSheet2.Enabled = false;
+            this.counterSheet2.Location = new System.Drawing.Point(221, 27);
+            this.counterSheet2.Name = "counterSheet2";
+            this.counterSheet2.Size = new System.Drawing.Size(196, 189);
+            this.counterSheet2.TabIndex = 3;
+            this.counterSheet2.Visible = false;
+            // 
+            // counterSheet3
+            // 
+            this.counterSheet3.Enabled = false;
+            this.counterSheet3.Location = new System.Drawing.Point(430, 27);
+            this.counterSheet3.Name = "counterSheet3";
+            this.counterSheet3.Size = new System.Drawing.Size(196, 189);
+            this.counterSheet3.TabIndex = 4;
+            this.counterSheet3.Visible = false;
+            // 
+            // counterSheet4
+            // 
+            this.counterSheet4.Enabled = false;
+            this.counterSheet4.Location = new System.Drawing.Point(639, 27);
+            this.counterSheet4.Name = "counterSheet4";
+            this.counterSheet4.Size = new System.Drawing.Size(196, 189);
+            this.counterSheet4.TabIndex = 5;
+            this.counterSheet4.Visible = false;
+            // 
+            // counterSheet5
+            // 
+            this.counterSheet5.Enabled = false;
+            this.counterSheet5.Location = new System.Drawing.Point(848, 27);
+            this.counterSheet5.Name = "counterSheet5";
+            this.counterSheet5.Size = new System.Drawing.Size(196, 189);
+            this.counterSheet5.TabIndex = 6;
+            this.counterSheet5.Visible = false;
             // 
             // counterSheet6
             // 
@@ -202,53 +271,9 @@ namespace pokemonCounterThing {
             this.counterSheet6.TabIndex = 10;
             this.counterSheet6.Visible = false;
             // 
-            // counterSheet5
-            // 
-            this.counterSheet5.Enabled = false;
-            this.counterSheet5.Location = new System.Drawing.Point(848, 27);
-            this.counterSheet5.Name = "counterSheet5";
-            this.counterSheet5.Size = new System.Drawing.Size(196, 189);
-            this.counterSheet5.TabIndex = 6;
-            this.counterSheet5.Visible = false;
-            // 
-            // counterSheet4
-            // 
-            this.counterSheet4.Enabled = false;
-            this.counterSheet4.Location = new System.Drawing.Point(639, 27);
-            this.counterSheet4.Name = "counterSheet4";
-            this.counterSheet4.Size = new System.Drawing.Size(196, 189);
-            this.counterSheet4.TabIndex = 5;
-            this.counterSheet4.Visible = false;
-            // 
-            // counterSheet3
-            // 
-            this.counterSheet3.Enabled = false;
-            this.counterSheet3.Location = new System.Drawing.Point(430, 27);
-            this.counterSheet3.Name = "counterSheet3";
-            this.counterSheet3.Size = new System.Drawing.Size(196, 189);
-            this.counterSheet3.TabIndex = 4;
-            this.counterSheet3.Visible = false;
-            // 
-            // counterSheet1
-            // 
-            this.counterSheet1.Location = new System.Drawing.Point(12, 27);
-            this.counterSheet1.Name = "counterSheet1";
-            this.counterSheet1.Size = new System.Drawing.Size(196, 189);
-            this.counterSheet1.TabIndex = 0;
-            this.counterSheet1.changeCounterSheetState(true);
-            // 
-            // counterSheet2
-            // 
-            this.counterSheet2.Enabled = false;
-            this.counterSheet2.Location = new System.Drawing.Point(221, 27);
-            this.counterSheet2.Name = "counterSheet2";
-            this.counterSheet2.Size = new System.Drawing.Size(196, 189);
-            this.counterSheet2.TabIndex = 3;
-            this.counterSheet2.Visible = false;
-            // 
             // mainForm
             // 
-            this.ClientSize = new System.Drawing.Size(1265, 287);
+            this.ClientSize = new System.Drawing.Size(1266, 287);
             this.Controls.Add(this.counterSheet1);
             this.Controls.Add(this.counterSheet2);
             this.Controls.Add(this.counterSheet3);
@@ -266,6 +291,7 @@ namespace pokemonCounterThing {
             this.Name = "mainForm";
             this.Text = "\"TVEPRC\" Counter";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.mainForm_FormClosing);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             this.Click += new System.EventHandler(this.mainForm_Click);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mainForm_KeyDown);
             this.mainMenuStrip.ResumeLayout(false);
@@ -289,6 +315,7 @@ namespace pokemonCounterThing {
 
             return false;
         }
+
         private void mainForm_KeyDown(object sender, KeyEventArgs e) {
             if(KeyValArr[0] == e.KeyData && counterSheet1.isOn())
                 counterSheet1.incrementCounter();
@@ -499,6 +526,17 @@ namespace pokemonCounterThing {
             KeyValArr[3] = Properties.Settings.Default.csKeybind3;
             KeyValArr[4] = Properties.Settings.Default.csKeybind4;
             KeyValArr[5] = Properties.Settings.Default.csKeybind5;
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+            counterSheet1.Visible = true;
+            counterSheet1.Enabled = true;
+        }
+
+        private void mainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 
